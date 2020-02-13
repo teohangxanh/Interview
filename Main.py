@@ -1,4 +1,4 @@
-import Sorting
+
 import my_math
 
 #Prompt the user to input the name of the file
@@ -18,10 +18,7 @@ with open('1.txt', 'r') as f:
         my_list = int_list
         
 # print(my_list)
-<<<<<<< Updated upstream
-print(Sorting.d_insertion(my_list))
-=======
->>>>>>> Stashed changes
+print(my_math.findPrime(100))
 
 #Close the file
 my_file.close()
