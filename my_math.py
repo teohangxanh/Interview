@@ -21,8 +21,17 @@ def isPrime(n):
 
 #Find all primes in a range
 def findPrime(n):
-    arr = []
-    for i in range(2, n + 1):
-        if isPrime(i):
-            arr.append(i)
-    return arr
+    primes = []
+    answer = []
+    for i in range(int(n) + 1):
+        primes.append(1)
+    primes[0] = 0
+    primes[1] = 0
+    for i in range(2, int(n**0.5) + 1):
+        if primes[i] == 1:
+            for j in range(2, int(n / i) + 1):
+                primes[i * j] = 0
+    for i in range(len(primes)):
+        if primes[i] == 1:
+            answer.append(i)
+    return answer
