@@ -35,3 +35,21 @@ def findPrime(n):
         if primes[i] == 1:
             answer.append(i)
     return answer
+
+#Find all factors of a number
+def findFactors(n):
+    answer = [1]
+    right = []
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            answer.append(int(i))
+            if int(n ** 0.5) != i:
+                right.append(int(n / i))
+    for i in range(len(right) - 1, 0, -1):
+        answer.append(right[i])
+    answer.insert(len(answer), n)
+    return answer
+            
+    
+    
+    
