@@ -39,14 +39,14 @@ def findPrime(n):
 #Find all factors of a number
 def findFactors(n):
     answer = [1]
-    right = []
+    increment = 1
     for i in range(2, int(n ** 0.5) + 1):
         if n % i == 0:
-            answer.append(int(i))
+            answer.insert(increment, int(i))
+            increment += 1
+            # If n != i^2, (n / i) counts
             if int(n ** 0.5) != i:
-                right.append(int(n / i))
-    for i in range(len(right) - 1, 0, -1):
-        answer.append(right[i])
+                answer.insert(increment, int(n / i))
     answer.insert(len(answer), n)
     return answer
             
