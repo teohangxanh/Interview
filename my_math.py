@@ -71,6 +71,13 @@ def findPFactors(n):
     ans[int(n)] = 1
     return ans
             
+#Find Greatest Common Divisor
+def gcd(a, b):
+    if type(a) == int and type(b) == int:
+        return a if b == 0 else gcd(b, a % b)
+    else:
+        return -1
+
     
     
     
