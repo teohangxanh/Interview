@@ -18,7 +18,6 @@ with open('1.txt', 'r') as f:
         my_list = int_list
         
 # print(my_list)
-print(my_math.findFactors(100))
 
 #Close the file
 my_file.close()

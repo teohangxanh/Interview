@@ -12,10 +12,11 @@ def isPrime(n):
     if type(n) == int:
         if n < 2:
             return False
+        #i: 2 -> sqrt(n)
         for i in range(2, int(n ** 0.5) + 1):
             if n % i == 0:
                 return False
-    else:
+    else: #i is not an integer
         return -1
     return flag
 
@@ -30,7 +31,10 @@ def findPrime(n):
     for i in range(2, int(n**0.5) + 1):
         if primes[i] == 1:
             for j in range(2, int(n / i) + 1):
+    #In primes, value == 1 means the value of the index is the prime
                 primes[i * j] = 0
+                
+    #Copy primes into a new list
     for i in range(len(primes)):
         if primes[i] == 1:
             answer.append(i)
@@ -44,11 +48,28 @@ def findFactors(n):
         if n % i == 0:
             answer.insert(increment, int(i))
             increment += 1
-            # If n != i^2, (n / i) counts
+            # If n = i^2, (n / i) counts
             if int(n ** 0.5) != i:
+                #This is to keep the factors sorted in ascending order
                 answer.insert(increment, int(n / i))
+    #Prepend n to the list as it's also a factor of itself
     answer.insert(len(answer), n)
     return answer
+
+#Find all prime factors of a number
+def findPFactors(n):
+    #Keys <- factors, values <- powers
+    ans = {}
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            count = 0
+            #Count = power of the factor
+            while n % i == 0:
+                n /= i
+                count += 1
+            ans[i] = count
+    ans[int(n)] = 1
+    return ans
             
     
     
