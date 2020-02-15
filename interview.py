@@ -53,4 +53,14 @@ def question3(alist, blist, k):
                 a = alist[i]
                 b = blist[j]
     return a, b
+
+def displayFib(n):
+    ans = [0] * n
+    for i in range(n):
+        if i < 2:
+            ans[i] = 1
+        elif i>= 2:
+            ans[i] = ans[i - 1] + ans[i - 2]
+    return ans
+
     

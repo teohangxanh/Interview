@@ -19,9 +19,7 @@ with open('1.txt', 'r') as f:
         int_list = [int(i) for i in line.split(',')]
         my_list = int_list
         
-alist = [-5, -2, 0, 3, 6, 5, 7, 8, 9]
-blist = [-25, -22, -20, -11, 0]
-print(interview.question3(alist, blist, 15))
+print(len('asdasdsabdvasda'))
         
 #Close the file
 my_file.close()
