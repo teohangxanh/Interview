@@ -5,14 +5,16 @@ Description:
     The only parameter is the list of integers to be sorted
 '''
 
+import math
+
 #Swap two numbers in a list using their indices
 def swapPos(a, i, j):
     temp = a[i]
     a[i] = a[j]
     a[j] = temp
  
-#Swap two numbers' values
-def swapVal(a, b):
+#Swap two numbers' remues
+def swaprem(a, b):
     temp = a
     a = b
     b = temp
@@ -138,4 +140,41 @@ def d_shell(alist):
                     j -= gap
         gap = int(gap / 2)
     return alist
+
+def a_radix(alist):
+    digit = 0
+    mx = 0
+    
+    #Find how many digits the max number has
+    for i in range(len(alist)):
+        mx = max(mx, alist[i])
+        
+    #If len(alist) is a power of 10 evenly
+    if math.log(mx, 10) == math.floor(math.log(mx, 10)):
+        digit = math.log(mx, 10)
+    else:
+        digit = math.floor(math.log(mx, 10)) + 1
+    
+    #i represents the number of digits of max
+    newlist = alist.copy()
+    sublist = [[], [], [], [], [], [], [], [], [], []]
+    for i in range(digit + 1):
+    #j stands for index of each number in the list
+        for j in range(len(newlist)):
+            rem = newlist[j] % 10
+            sublist[rem].append(newlist[j])
+        # for j in range(10):
+        #     for key in sublist:
+        #         value = sublist[key]
+        #         if value == j:
+        #             print(key, end=' ')
+        print(sublist)
+            
+    return 0
+            
+        
+    
+    
+    
+    
         
