@@ -7,6 +7,15 @@ Description:
 
 import math
 
+#This function returns a list of digits of n from right to left
+def getDigits(n):
+    ans = []
+    while n > 0:
+        rem = n % 10
+        ans.append(rem)
+        n = int(n / 10)
+    return ans
+
 #Swap two numbers in a list using their indices
 def swapPos(a, i, j):
     temp = a[i]
@@ -158,19 +167,19 @@ def a_radix(alist):
     #i represents the number of digits of max
     newlist = alist.copy()
     sublist = [[], [], [], [], [], [], [], [], [], []]
+    d = 1
     for i in range(digit + 1):
     #j stands for index of each number in the list
+        d = d * 10
         for j in range(len(newlist)):
-            rem = newlist[j] % 10
+            while 
+            rem = newlist[j] % d
             sublist[rem].append(newlist[j])
-        # for j in range(10):
-        #     for key in sublist:
-        #         value = sublist[key]
-        #         if value == j:
-        #             print(key, end=' ')
         print(sublist)
             
     return 0
+    
+
             
         
     
