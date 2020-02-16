@@ -1,5 +1,7 @@
 
-import Sorting
+# import sorting
+import math
+import interview
 
 #Prompt the user to input the name of the file
 #fileName = input("Enter the file containing numbers to be sorted\n")
@@ -14,11 +16,10 @@ my_list = []
 #Read the file and copy the numbers to my list
 with open('1.txt', 'r') as f:
     for line in f:
-        int_list = [int(i) for i in line.split()]
+        int_list = [int(i) for i in line.split(',')]
         my_list = int_list
         
-# print(my_list)
-print(Sorting.a_shell(my_list))
-
+print(len('asdasdsabdvasda'))
+        
 #Close the file
 my_file.close()
