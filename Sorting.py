@@ -108,6 +108,17 @@ def d_insertion(a_list):
 def a_shell(a_list):
     if len(a_list) < 2:
         return a_list
-    gap = len(a_list) / 2
+    gap = int(len(a_list) / 2)
     while (gap > 0):
+        for i in range(len(a_list) - gap):
+            if a_list[i] > a_list[i + gap]:
+                swapPos(a_list, i, i + gap)
+        
+        gap = int(gap / 2)
+                
+    return a_list
+        
+        
+        
+        
         

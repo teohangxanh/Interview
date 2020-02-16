@@ -1,5 +1,5 @@
 
-import my_math
+import Sorting
 
 #Prompt the user to input the name of the file
 #fileName = input("Enter the file containing numbers to be sorted\n")
@@ -18,7 +18,7 @@ with open('1.txt', 'r') as f:
         my_list = int_list
         
 # print(my_list)
-print(my_math.gcd(400, 142))
+print(Sorting.a_shell(my_list))
 
 #Close the file
 my_file.close()
