@@ -25,8 +25,7 @@ for i in range(100):
 #         int_list = [int(i) for i in line.split(' ')]
 #         my_list = int_list.copy()
 
-print(Sorting.a_shell(a_list))
-print(Sorting.d_shell(a_list))
+print(Sorting.a_radix(a_list))
         
 #Close the file
 # my_file.close()

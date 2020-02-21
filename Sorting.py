@@ -7,6 +7,21 @@ Description:
 
 import math
 
+# This returns a list of digits of a number with/ without iteration
+def extract_digits(number, times=None):
+    ans = []
+    if times is None:
+        while number > 0:
+            digit = number % 10
+            ans.insert(0, digit)
+            number = int(number / 10)
+    else:
+        for i in range(times):
+            digit = number % 10
+            ans.insert(0, digit)
+            number = int(number / 10)
+    return ans
+
 #This function returns a list of digits of n from right to left
 def getDigits(n):
     ans = []
@@ -16,6 +31,13 @@ def getDigits(n):
         n = int(n / 10)
     return ans
 
+# This returns the digit at a specific position of a number from the right
+def getDigit(number, position):
+    if position < 0: 
+        return -1
+    number = int(number / (10**position))
+    return number % 10
+    
 #Swap two numbers in a list using their indices
 def swapPos(a, i, j):
     temp = a[i]
@@ -153,24 +175,36 @@ def d_shell(alist):
 def a_radix(alist):
     digit = 0
     mx = 0
-    
-    #Find how many digits the max number has
+    # Find max in the list
     for i in range(len(alist)):
         mx = max(mx, alist[i])
         
-    #If len(alist) is a power of 10 evenly
+    # Find the number of digits of max
     if math.log(mx, 10) == math.floor(math.log(mx, 10)):
         digit = math.log(mx, 10)
     else:
         digit = math.floor(math.log(mx, 10)) + 1
+    digit = int(digit + 1)
     
-    #i represents the number of digits of max
-    tem_list = {}
-    # Key = index, value = value  
-    for i in range(len(alist)):
-        tem_list[i] = alist[i]
-        
-    return 0
+    assorting_hat = [[] for i in range(10)]
+    copy_list = []
+    for i in range(digit):
+        if i==0:
+            for number in alist:
+                bucket = getDigit(number, i)
+                # Pour them in the correct buckets
+                assorting_hat[bucket].append(number)
+        else:
+            for sublist in copy_list:
+                for number in sublist:
+                    bucket = getDigit(number, i)
+                    assorting_hat[bucket].append(number)
+        copy_list = assorting_hat.copy()
+        for j in range(len(assorting_hat)):
+            assorting_hat[j].clear()
+        print(copy_list)
+        print()
+    return digit
     
 
             
