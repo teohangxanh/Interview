@@ -203,6 +203,41 @@ def a_radix(alist):
     alist.clear()
     alist = assorting_hat[0].copy()
     return alist
+
+def d_radix(alist):
+    digit = 0
+    mx = 0
+    # Find max in the list
+    for i in range(len(alist)):
+        mx = max(mx, alist[i])
+        
+    # Find the number of digits of max
+    if math.log(mx, 10) == math.floor(math.log(mx, 10)):
+        digit = math.log(mx, 10)
+    else:
+        digit = math.floor(math.log(mx, 10)) + 1
+    digit = int(digit + 1)
+    
+    assorting_hat = [[] for i in range(10)]
+    for i in range(digit):
+        for j in range(len(assorting_hat)):
+            assorting_hat[j].clear()
+        # Pour numbers to assorting_hat from alist
+        for number in reversed(alist):
+            bucket = getDigit(number, i)
+            # Pour them in the correct buckets
+            assorting_hat[bucket].append(number)
+        for sublist in reversed(assorting_hat):
+            if len(sublist) > 1:
+                sublist = d_shell(sublist)
+        alist.clear()
+        # Pour the numbers back to alist to prepare for the next iteration 
+        for sublist in assorting_hat:
+            for number in sublist:
+                alist.append(number)
+    alist.clear()
+    alist = assorting_hat[0].copy()
+    return alist
     
 
             
