@@ -165,18 +165,11 @@ def a_radix(alist):
         digit = math.floor(math.log(mx, 10)) + 1
     
     #i represents the number of digits of max
-    newlist = alist.copy()
-    sublist = [[], [], [], [], [], [], [], [], [], []]
-    d = 1
-    for i in range(digit + 1):
-    #j stands for index of each number in the list
-        d = d * 10
-        for j in range(len(newlist)):
-            while 
-            rem = newlist[j] % d
-            sublist[rem].append(newlist[j])
-        print(sublist)
-            
+    tem_list = {}
+    # Key = index, value = value  
+    for i in range(len(alist)):
+        tem_list[i] = alist[i]
+        
     return 0
     
 
