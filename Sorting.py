@@ -187,24 +187,22 @@ def a_radix(alist):
     digit = int(digit + 1)
     
     assorting_hat = [[] for i in range(10)]
-    copy_list = []
     for i in range(digit):
-        if i==0:
-            for number in alist:
-                bucket = getDigit(number, i)
-                # Pour them in the correct buckets
-                assorting_hat[bucket].append(number)
-        else:
-            for sublist in copy_list:
-                for number in sublist:
-                    bucket = getDigit(number, i)
-                    assorting_hat[bucket].append(number)
-        copy_list = assorting_hat.copy()
         for j in range(len(assorting_hat)):
             assorting_hat[j].clear()
-        print(copy_list)
-        print()
-    return digit
+        # Pour numbers to assorting_hat from alist
+        for number in alist:
+            bucket = getDigit(number, i)
+            # Pour them in the correct buckets
+            assorting_hat[bucket].append(number)
+        alist.clear()
+        # Pour the numbers back to alist to prepare for the next iteration 
+        for sublist in assorting_hat:
+            for number in sublist:
+                alist.append(number)
+    alist.clear()
+    alist = assorting_hat[0].copy()
+    return alist
     
 
             
