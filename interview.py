@@ -5,6 +5,7 @@ Description:
 '''
 
 import math
+from numpy import random
 
 def isPalindrome(n):
     my_list = []
@@ -63,4 +64,24 @@ def displayFib(n):
             ans[i] = ans[i - 1] + ans[i - 2]
     return ans
 
+# This counts words in a string
+def countWords(string):
+    # Removes the leading and ending whitespaces
+    string = string.strip()
+    result = string.count(' ')
+    return result + 1
+    
+# This returns a list of n numbers in [0, 1] without duplicates uniformly distributed
+def roll(n):
+    result = []
+    for i in range(n):
+        number = random.uniform(0, 1)
+        if number in result:
+            while number in result:
+                number = random.uniform(0, 1)
+        result.append(number)
+    return result
+                
+                
+    
     

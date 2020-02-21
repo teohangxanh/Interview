@@ -1,7 +1,8 @@
 
 # import sorting
-import math
+# import math
 import interview
+import numpy
 
 #Prompt the user to input the name of the file
 #fileName = input("Enter the file containing numbers to be sorted\n")
@@ -19,7 +20,7 @@ with open('1.txt', 'r') as f:
         int_list = [int(i) for i in line.split(',')]
         my_list = int_list
         
-print(len('asdasdsabdvasda'))
+print(interview.roll(100))
         
 #Close the file
 my_file.close()
