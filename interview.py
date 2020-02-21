@@ -5,6 +5,14 @@ Description:
 '''
 
 import math
+from numpy import random
+
+# This calculate factorial of n
+def fact(n):
+    ans = 1
+    for i in range(2, n + 1):
+        ans *= i
+    return ans
 
 def isPalindrome(n):
     my_list = []
@@ -63,4 +71,18 @@ def displayFib(n):
             ans[i] = ans[i - 1] + ans[i - 2]
     return ans
 
+# This returns permutation of n choose k in an equal probability
+def permu(n, k):
+    return int(fact(n) / fact(n - k))
+
+# This returns a list of n uniformly random numbers from a to b
+def uniform(n, a, b):
+    result = []
+    for i in range(n):
+        number = random.uniform(a, b)
+        result.append(number)
+    return result
+    
+    
+    
     
