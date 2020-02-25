@@ -1,6 +1,6 @@
 '''
 Author: Ted Dang
-Description: 
+Description:
     This programs is to sort a list of integers
     The only parameter is the list of integers to be sorted
 '''
@@ -33,31 +33,31 @@ def getDigits(n):
 
 # This returns the digit at a specific position of a number from the right
 def getDigit(number, position):
-    if position < 0: 
+    if position < 0:
         return -1
     number = int(number / (10**position))
     return number % 10
-    
+
 #Swap two numbers in a list using their indices
 def swapPos(a, i, j):
     temp = a[i]
     a[i] = a[j]
     a[j] = temp
- 
+
 #Swap two numbers' remues
 def swaprem(a, b):
     temp = a
     a = b
     b = temp
-    
+
 def shift_right(alist, left, right):
     if (left > right or len(alist) < left or len(alist) < right):
         return -1
     temp = alist[right]
     for i in range(right, left, -1):
         alist[i] = alist[i - 1]
-    alist[left] = temp    
-    
+    alist[left] = temp
+
 def a_bubble(alist):
     if len(alist) < 2:
         return alist
@@ -68,11 +68,11 @@ def a_bubble(alist):
             if (alist[j] > alist[j + 1]):
                 swapPos(alist, j, j + 1)
                 swapped = True
-        #As there is no swap, the list was already sorted      
+        #As there is no swap, the list was already sorted
         if (swapped == False):
             break
-    return alist           
- 
+    return alist
+
 def d_bubble(alist):
     if len(alist) < 2:
         return alist
@@ -83,10 +83,10 @@ def d_bubble(alist):
             if (alist[j] < alist[j + 1]):
                 swapPos(alist, j, j + 1)
                 swapped = True
-        #As there is no swap, the list was already sorted      
+        #As there is no swap, the list was already sorted
         if (swapped == False):
             break
-    return alist 
+    return alist
 
 def a_selection(alist):
     if len(alist) < 2:
@@ -115,7 +115,7 @@ def d_selection(alist):
         if (alist[i] != max):
             swapPos(alist, max_index, i)
     return alist
-        
+
 def a_insertion(alist):
     if len(alist) < 2:
         return alist
@@ -178,14 +178,14 @@ def a_radix(alist):
     # Find max in the list
     for i in range(len(alist)):
         mx = max(mx, alist[i])
-        
+
     # Find the number of digits of max
     if math.log(mx, 10) == math.floor(math.log(mx, 10)):
         digit = math.log(mx, 10)
     else:
         digit = math.floor(math.log(mx, 10)) + 1
     digit = int(digit + 1)
-    
+
     assorting_hat = [[] for i in range(10)]
     for i in range(digit):
         for j in range(len(assorting_hat)):
@@ -196,7 +196,7 @@ def a_radix(alist):
             # Pour them in the correct buckets
             assorting_hat[bucket].append(number)
         alist.clear()
-        # Pour the numbers back to alist to prepare for the next iteration 
+        # Pour the numbers back to alist to prepare for the next iteration
         for sublist in assorting_hat:
             for number in sublist:
                 alist.append(number)
@@ -204,13 +204,37 @@ def a_radix(alist):
     alist = assorting_hat[0].copy()
     return alist
 
+def d_radix(alist):
+    digit = 0
+    mx = 0
+    # Find max in the list
+    for i in range(len(alist)):
+        mx = max(mx, alist[i])
 
-    
+    # Find the number of digits of max
+    if math.log(mx, 10) == math.floor(math.log(mx, 10)):
+        digit = math.log(mx, 10)
+    else:
+        digit = math.floor(math.log(mx, 10)) + 1
+    digit = int(digit + 1)
 
-            
-        
-    
-    
-    
-    
-        
+    assorting_hat = [[] for i in range(10)]
+    for i in range(digit):
+        for j in range(len(assorting_hat)):
+            assorting_hat[j].clear()
+        # Pour numbers to assorting_hat from alist
+        for number in reversed(alist):
+            bucket = getDigit(number, i)
+            # Pour them in the correct buckets
+            assorting_hat[bucket].append(number)
+        for sublist in reversed(assorting_hat):
+            if len(sublist) > 1:
+                sublist = d_shell(sublist)
+        alist.clear()
+        # Pour the numbers back to alist to prepare for the next iteration
+        for sublist in assorting_hat:
+            for number in sublist:
+                alist.append(number)
+    alist.clear()
+    alist = assorting_hat[0].copy()
+    return alist

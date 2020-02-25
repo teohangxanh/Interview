@@ -3,7 +3,7 @@
 import math
 import interview
 import random
-import Sorting
+import sorting
 
 #Prompt the user to input the name of the file
 #fileName = input("Enter the file containing numbers to be sorted\n")
@@ -24,8 +24,8 @@ for i in range(100):
 #     for line in f:
 #         int_list = [int(i) for i in line.split(' ')]
 #         my_list = int_list.copy()
-
-print(Sorting.a_radix(a_list))
+# print(a_list)
+print(sorting.d_radix(a_list))
         
 #Close the file
 # my_file.close()
