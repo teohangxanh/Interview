@@ -238,3 +238,78 @@ def d_radix(alist):
     alist.clear()
     alist = assorting_hat[0].copy()
     return alist
+
+def a_quick(alist, low, high):
+    # Split into two smaller lists
+    if low < high:
+        pivot = a_partition(alist, low, high)
+        a_quick(alist, low, pivot - 1)
+        a_quick(alist, pivot + 1, high)
+
+def a_partition(alist, left, right):
+    # Partially sort the list
+    if len(alist) < 2:
+        return alist
+    l = left
+    r = right
+    while left < right:
+        while alist[l] <= alist[left]:
+            l += 1
+        while alist[r] > alist[left]:
+            r -= 1
+        if l < r:
+            swapPos(alist, l, r)
+    swapPos(alist, left, r)
+    return r
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
