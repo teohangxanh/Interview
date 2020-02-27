@@ -83,6 +83,29 @@ def uniform(n, a, b):
         result.append(number)
     return result
     
-    
-    
+''' Given a non-empty array, return true if there is a place to split the 
+array so that the sum of the numbers on one side is equal to the sum of the 
+numbers on the other side '''
+def canBalance(alist):
+    leng = len(alist)
+    i = 0
+    j = leng - 1
+    l = 0
+    r = 0
+    while i <= j:
+        if l < r:
+            l += alist[i]
+            i += 1
+        elif l > r:
+            r += alist[j]
+            j -= 1
+        else:
+            if i == j:
+                return alist[i] == 0
+            else:
+                l += alist[i]
+                i += 1
+                r += alist[j]
+                j -= 1
+    return l == r
     
