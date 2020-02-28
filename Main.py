@@ -14,20 +14,21 @@ import interview
 
 #Create a list to store the numbers in the file
 # my_list = []
-a_list = []
-for i in range(100):
-    num = random.randint(0, 1000)
-    a_list.append(num)
+alist = []
 
-a_list.clear()
-a_list = [2, 3, 4, 1, 2]
+for i in range(10):
+    num = random.randint(0, 5)
+    alist.append(num)
+print(alist)
+print(interview.fix34(alist))
+
 #Read the file and copy the numbers to my list
 # with open('1.txt', 'r') as f:
 #     for line in f:
 #         int_list = [int(i) for i in line.split(' ')]
 #         my_list = int_list.copy()
-
-print(interview.findIndex(a_list))
+# print(alist)
+# print(interview.fix34(alist))
         
 #Close the file
 # my_file.close()

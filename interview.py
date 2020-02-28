@@ -109,3 +109,51 @@ def canBalance(alist):
                 j -= 1
     return l == r
     
+''' 
+Return an array that contains exactly the same numbers as the given array, 
+but rearranged so that every 3 is immediately followed by a 4. Do not move 
+the 3's, but every other number may move. The array contains the same number 
+of 3's and 4's, every 3 has a number after it that is not a 3, and a 3 appears 
+in the array before any 4. '''
+def fix34(alist):
+    l = []
+    # l stores indices of four's in alist
+    for i in range(len(alist)):
+        if alist[i] == 4:
+            l.append(i)
+    count = 0
+    for i in range(len(alist)):
+        if i + 1 < len(alist) and alist[i] == 3:
+            alist[l[count]] = alist[i+1]
+            alist[i+1] = 4
+            count += 1
+    return alist
+    
+'''public int[] fix34(int[] nums) {
+  int len = nums.length;
+  List<Integer> l = new ArrayList<Integer>(); 
+  for (int i = 0; i < len; i++){
+    if (nums[i] == 4) {
+      l.add(i);
+    }
+  }
+  int count = 0;
+  for (int i = 0; i < len; i++){
+    // If needed to replace nums[i]
+    if (i + 1 < len && nums[i] == 3){
+      nums[l.get(count)] = nums[i+1];
+      nums[i+1] = 4;
+      count++;
+    }
+
+  }
+  return nums;
+}'''
+
+
+
+
+
+
+
+
