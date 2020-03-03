@@ -8,31 +8,31 @@ int fact(int n){
         }
     }
     return ans;
-}
+};
 
 /* This function returns a combination of n choose k*/
 int combination(int n, int k){
 	return fact(n) / (fact(n-k) * fact(k));
-}
+};
 
 /* This function returns cosine of the angle to x-axis*/
 double findCos(double slope){
     double c = sqrt(1 + slope*slope);
     return slope / c;
-}
+};
 
 /* This function returns sine of the angle to x-axis*/
 double findSin(double slope){
     double c = sqrt(1 + slope*slope);
     return 1 / c;
-}
+};
 
 /* This class store location of a point in 2D*/
 class Location{
-    public:
+    private:
         double cord_x;
         double cord_y;
-
+    public:
         // Constructor
         Location(){
             cord_x = 0;
@@ -46,12 +46,12 @@ class Location{
 
 /* This class represents a square */
 class Square{
-    public:
+    private:
         Location bl;
         Location br;
         Location tl;
         Location tr;
-
+    public:
         //Constructor
         Square(double x, double y, double lengthSide){
             bl.cord_x = x;
@@ -59,7 +59,7 @@ class Square{
             br.cord_x = x + lengthSide;
             br.cord_y = y;
             tl.cord_x = x;
-            tl.cord_y = y+ lengthSide;
+            tl.cord_y = y + lengthSide;
             tr.cord_x = x + lengthSide;
             tr.cord_y = y + lengthSide;
         }
@@ -78,7 +78,4 @@ class Square{
             tr.cord_y += magnitude;
         }
 
-        void shiftVelo(double slope, double velo){
-            bl.cord_x =
-        }
 };
