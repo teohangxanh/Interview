@@ -6,7 +6,7 @@ Description:
 '''
 """
 
-#Check if a number is prime
+# Check if a number is prime
 def isPrime(n):
     flag = True
     if type(n) == int:
@@ -19,6 +19,10 @@ def isPrime(n):
     else: #i is not an integer
         return -1
     return flag
+
+# Find permutation of N choose k
+def permutation(n, k):
+    return fact(n) // fact(n - k)
 
 #Find all primes in a range
 def findPrime(n):

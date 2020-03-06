@@ -14,6 +14,14 @@ def fact(n):
         ans *= i
     return ans
 
+# This returns permutation of n choose k in an equal probability
+def permutation(n, k):
+    return int(fact(n) / fact(n - k))
+
+# This returns combination of n choose k in an equal probability
+def combination(n, k):
+    return fact(n) // (fact(n - k)) * fact(k))
+
 def isPalindrome(n):
     my_list = []
     n = math.floor(n)
@@ -32,7 +40,6 @@ def findMin(alist):
         if mn > alist[i]:
             mn = alist[i]
     return mn
-
         
 def findMax(alist):
     mx = alist[0]
@@ -71,9 +78,7 @@ def displayFib(n):
             ans[i] = ans[i - 1] + ans[i - 2]
     return ans
 
-# This returns permutation of n choose k in an equal probability
-def permu(n, k):
-    return int(fact(n) / fact(n - k))
+
 
 # This returns a list of n uniformly random numbers from a to b
 def uniform(n, a, b):
