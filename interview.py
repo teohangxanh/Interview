@@ -20,7 +20,7 @@ def permutation(n, k):
 
 # This returns combination of n choose k in an equal probability
 def combination(n, k):
-    return fact(n) // (fact(n - k)) * fact(k))
+    return fact(n) // (fact(n - k) * fact(k))
 
 def isPalindrome(n):
     my_list = []

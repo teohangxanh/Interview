@@ -20,10 +20,6 @@ def isPrime(n):
         return -1
     return flag
 
-# Find permutation of N choose k
-def permutation(n, k):
-    return fact(n) // fact(n - k)
-
 #Find all primes in a range
 def findPrime(n):
     primes = []
