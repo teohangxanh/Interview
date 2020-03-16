@@ -1,12 +1,11 @@
-# -*- coding: utf-8 -*-
-"""
-Author: Ted Dang
-Description: 
-    This programs is to handle primes
-'''
-"""
 
-# Check if a number is prime
+import numpy as np
+
+'''
+Author: Ted Dang
+Usage: This programs is to handle primes
+'''
+#Check if a number is prime
 def isPrime(n):
     flag = True
     if type(n) == int:
@@ -20,7 +19,10 @@ def isPrime(n):
         return -1
     return flag
 
-#Find all primes in a range
+'''
+Author: Ted Dang
+Usage: This programs is to find all primes in a range
+'''
 def findPrime(n):
     primes = []
     answer = []
@@ -40,7 +42,10 @@ def findPrime(n):
             answer.append(i)
     return answer
 
-#Find all factors of a number
+'''
+Author: Ted Dang
+Usage: This programs is to find all factors of a number
+'''
 def findFactors(n):
     answer = [1]
     increment = 1
@@ -56,7 +61,10 @@ def findFactors(n):
     answer.insert(len(answer), n)
     return answer
 
-#Find all prime factors of a number
+'''
+Author: Ted Dang
+Usage: This programs is to find all prime factors of a number
+'''
 def findPFactors(n):
     #Keys <- factors, values <- powers
     ans = {}
@@ -71,13 +79,25 @@ def findPFactors(n):
     ans[int(n)] = 1
     return ans
             
-#Find Greatest Common Divisor
+'''
+Author: Ted Dang
+Usage: This programs is to find Greatest Common Divisor
+'''
 def gcd(a, b):
     if type(a) == int and type(b) == int:
         return a if b == 0 else gcd(b, a % b)
     else:
         return -1
-
-    
-    
-    
+'''
+Author: Ted Dang
+Usage: This programs is to find the Fn number of a fibonaci starting
+from a and b. For example, the series = a, b, a+b, b + a+b, etc.
+'''
+def findFib(a, b, n):
+    mid = np.array([[0, 1], [1, 1]])
+    temp = mid
+    right = np.array([a, b])
+    left = np.array([1, 0])
+    for i in range(n-1):
+        mid = mid.dot(temp)
+    return left.dot(mid).dot(right)
