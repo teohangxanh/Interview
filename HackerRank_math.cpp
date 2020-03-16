@@ -1,3 +1,90 @@
+#include <iostream>
+#include <cmath>
+#include <vector>
+using namespace std;
+
+/*
+Author:         Ted Dang
+Date created:   03/16/2020
+Usage:          Printing a vector
+*/
+void print(vector<int> v){
+    for (int i = 0; i < v.size(); i++){
+        cout << v[i] << endl;
+    }
+}
+
+/*
+Author:         Ted Dang
+Date created:   03/16/2020
+Usage:          Checking if the given number is prime
+*/
+bool isPrime(int n){
+    for (int i = 2; i < sqrt(n); i++){
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
+/*
+Author:         Ted Dang
+Date created:   03/16/2020
+Usage:          Sum up all digits of a number
+*/
+int sumDigits(int n){
+    int ans = 0;
+    while (n > 0){
+        int rem = n % 10;
+        ans += rem;
+        n /= 10;
+    }
+    return ans;
+}
+
+/*
+Author:         Ted Dang
+Date created:   03/16/2020
+Usage:          Returning a vector of primes of the given number
+*/
+vector<int> findPrimes(int n){
+    vector<int> primes;
+    for (int i = 2; i < sqrt(n); i++){
+        while (n % i == 0){
+            primes.push_back(i);
+            n /= i;
+        }
+    }
+    if (n != 1) primes.push_back(n);
+    return primes;
+}
+
+/*
+Author:         Ted Dang
+Date created:   03/16/2020
+Usage:          Summing up all digits of primes of a Smith number
+*/
+int sumSmith(int n){
+    int ans = 0;
+    for (int i = 2; i < sqrt(n); i++){
+        while (n % i == 0){
+            ans += sumDigits(i);
+            n /= i;
+        }
+    }
+    if (n != 1) ans += sumDigits(n);
+    return ans;
+}
+
+/*
+Author:         Ted Dang
+Date created:   03/16/2020
+Usage:          Checking if a number is a Smith number
+*/
+int isSmith(int n){
+    return sumSmith(n) == sumDigits(n) && isPrime(n);
+}
+
+
 /* This function returns factorial of an interger*/
 int fact(int n){
     int ans = 1;
@@ -8,74 +95,9 @@ int fact(int n){
         }
     }
     return ans;
-};
+}
 
 /* This function returns a combination of n choose k*/
 int combination(int n, int k){
 	return fact(n) / (fact(n-k) * fact(k));
-};
-
-/* This function returns cosine of the angle to x-axis*/
-double findCos(double slope){
-    double c = sqrt(1 + slope*slope);
-    return slope / c;
-};
-
-/* This function returns sine of the angle to x-axis*/
-double findSin(double slope){
-    double c = sqrt(1 + slope*slope);
-    return 1 / c;
-};
-
-/* This class store location of a point in 2D*/
-class Location{
-    private:
-        double cord_x;
-        double cord_y;
-    public:
-        // Constructor
-        Location(){
-            cord_x = 0;
-            cord_y = 0;
-        }
-        Location(double x, double y){
-            cord_x = x;
-            cord_y = y;
-        }
-};
-
-/* This class represents a square */
-class Square{
-    private:
-        Location bl;
-        Location br;
-        Location tl;
-        Location tr;
-    public:
-        //Constructor
-        Square(double x, double y, double lengthSide){
-            bl.cord_x = x;
-            bl.cord_y = y;
-            br.cord_x = x + lengthSide;
-            br.cord_y = y;
-            tl.cord_x = x;
-            tl.cord_y = y + lengthSide;
-            tr.cord_x = x + lengthSide;
-            tr.cord_y = y + lengthSide;
-        }
-
-        void shiftH(double magnitude){
-            bl.cord_x += magnitude;
-            br.cord_x += magnitude;
-            tl.cord_x += magnitude;
-            tr.cord_x += magnitude;
-        }
-
-        void shiftV(double magnitude){
-            bl.cord_y += magnitude;
-            br.cord_y += magnitude;
-            tl.cord_y += magnitude;
-            tr.cord_y += magnitude;
-        }
-
-};
+}
