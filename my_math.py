@@ -7,17 +7,16 @@ Usage: This programs is to handle primes
 '''
 #Check if a number is prime
 def isPrime(n):
-    flag = True
     if type(n) == int:
-        if n < 2:
+        if n == 2:
+            return True
+        elif n < 2 or n % 2 == 0:
             return False
-        #i: 2 -> sqrt(n)
-        for i in range(2, int(n ** 0.5) + 1):
-            if n % i == 0:
-                return False
-    else: #i is not an integer
-        return -1
-    return flag
+        else:
+            for i in range(3, int(n**0.5)+1, 2):
+                if n % i == 0:
+                    return False
+    return True
 
 '''
 Author: Ted Dang
@@ -94,10 +93,5 @@ Usage: This programs is to find the Fn number of a fibonaci starting
 from a and b. For example, the series = a, b, a+b, b + a+b, etc.
 '''
 def findFib(a, b, n):
-    mid = np.array([[0, 1], [1, 1]])
-    temp = mid
-    right = np.array([a, b])
-    left = np.array([1, 0])
-    for i in range(n-1):
-        mid = mid.dot(temp)
-    return left.dot(mid).dot(right)
+    phi = (1 + 5 ** 0.5) / 2
+    return 0 if n < 0 else round((phi ** n) / (5 ** 0.5))

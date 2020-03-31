@@ -1,7 +1,49 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <string>
 using namespace std;
+
+/*
+Author:         Ted Dang
+Date created:   03/20/2020
+Usage:          Returning if the sum of two halves of a number == itself
+*/
+// int checkHalvesSum(int n){
+//     if countDigits(n % 2 == 0){
+//
+//     } else{
+//
+//     }
+// }
+
+/*
+Author:         Ted Dang
+Date created:   03/20/2020
+Usage:          Returning the number of digits of a number
+*/
+bool coutDigits(int n){
+    int count = 0;
+    while (n > 0){
+        count++;
+        n /= 10;
+    }
+    return count;
+}
+
+/*
+Author:         Ted Dang
+Date created:   03/16/2020
+Usage:          Returning power of a number
+*/
+double power(double num, int exp){
+    if (exp == 0) return 1;
+    double ans = num;
+    for (int i = 2; i <= exp; i++){
+        ans = ans * num;
+    }
+    return ans;
+}
 
 /*
 Author:         Ted Dang
@@ -49,8 +91,8 @@ Usage:          Returning a vector of primes of the given number
 vector<int> findPrimes(int n){
     vector<int> primes;
     for (int i = 2; i < sqrt(n); i++){
+        if (n % i == 0) primes.push_back(i);
         while (n % i == 0){
-            primes.push_back(i);
             n /= i;
         }
     }
@@ -84,20 +126,36 @@ int isSmith(int n){
     return sumSmith(n) == sumDigits(n) && isPrime(n);
 }
 
-
-/* This function returns factorial of an interger*/
+/*
+Author:         Ted Dang
+Date created:   03/16/2020
+Usage:          Returning factorial of an interger mod m
+*/
 int fact(int n){
     int ans = 1;
-    if (n < 2) return 1;
+    if (n == 0 || n == 1) return 1;
     else {
-        for (int i = n; i > 1; i--){
+        for (int i = 2; i <= n; i++){
             ans *= i;
+            cout << "i = " << i << endl;
+            cout << "total = " << ans << endl;
+            cout << endl;
+            // cout << "n = " << i << endl;
+            // cout << ans << endl;
         }
     }
     return ans;
 }
 
-/* This function returns a combination of n choose k*/
-int combination(int n, int k){
-	return fact(n) / (fact(n-k) * fact(k));
+/*
+Author:         Ted Dang
+Date created:   03/16/2020
+Usage:          Returning permutation of n choose k mod m
+*/
+int permutation(int n, int k){
+    int ans = 1;
+	for (int i = n - k + 1; i <= n; i++){
+        ans *= i;
+    }
+    return ans;
 }
