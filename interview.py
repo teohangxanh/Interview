@@ -6,6 +6,7 @@ Description:
 
 import math
 from numpy import random
+import pandas as pd
 
 # This calculate factorial of n
 def fact(n):
@@ -134,28 +135,28 @@ def fix34(alist):
             count += 1
     return alist
     
-'''public int[] fix34(int[] nums) {
-  int len = nums.length;
-  List<Integer> l = new ArrayList<Integer>(); 
-  for (int i = 0; i < len; i++){
-    if (nums[i] == 4) {
-      l.add(i);
-    }
-  }
-  int count = 0;
-  for (int i = 0; i < len; i++){
-    // If needed to replace nums[i]
-    if (i + 1 < len && nums[i] == 3){
-      nums[l.get(count)] = nums[i+1];
-      nums[i+1] = 4;
-      count++;
-    }
+'''Check if subsets of a set l can sum up to a number s'''
+def check_subset_sum(s, l):
+    l.insert(0, 0)
+    r = [[0 for i in range(s+1)] for j in range(len(l))]
+    for i in range(len(l)):
+        for j in range(s+1):
+            if j == 0:
+                r[i][j] = 1
+            else:
+                if j < l[i]:
+                    r[i][j] = r[i-1][j]
+                else:
+                    r[i][j] = r[i-1][j] or r[i-1][j - l[i]]
+    return(bool(r[-1][-1]))
+    index = [i for i in l]
+    columns = [i for i in range(s+1)]
+    r = pd.DataFrame(r, index, columns)
+    print(r)
 
-  }
-  return nums;
-}'''
-
-
+s = 15
+l = [1, 2, 4, 5, 9]
+print(check_subset_sum(s, l))
 
 
 
