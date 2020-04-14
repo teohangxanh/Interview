@@ -154,9 +154,56 @@ def check_subset_sum(s, l):
     r = pd.DataFrame(r, index, columns)
     print(r)
 
-s = 15
-l = [1, 2, 4, 5, 9]
-print(check_subset_sum(s, l))
+'''Return a list of items which sums up to the max value with the weight <= a given weight'''
+def knapsack(w, wl, vl):
+    r = [[0 for x in range(w+1)] for y in range(len(vl))]
+    for i in range(len(vl)):
+        for j in range(w+1):
+            up = r[i-1][j]
+            val = vl[i]
+            left = r[i-1][j - wl[i]]
+            if j == 0:
+                r[i][j] = 0
+            elif i == 0:
+                # If weight of item < max weight
+                if wl[i] <= j:
+                    r[i][j] = val
+            else:
+                # If weight of item < max weight
+                if wl[i] > j:
+                    r[i][j] = up
+                else:
+                    r[i][j] = max(val + left, up)
+                
+    trace_back = []
+    i = len(r) - 1
+    j = len(r[0]) - 1
+    while i != 0 and j != 0:
+        up = r[i-1][j]
+        val = vl[i]
+        left = r[i-1][j - wl[i]]
+        cur = r[i][j]
+        if cur == up:
+            i -= 1
+        else:
+            trace_back.append([wl[i], vl[i]]) 
+            j -= wl[i]
+            i -= 1
+    # Print (weight, value)
+    print(trace_back)
+    
+    # index = [[x for x in vl],[x for x in wl]]
+    # columns = [x for x in range(w+1)]
+    # r = pd.DataFrame(r, index, columns)
+    # print(r)
+    # for i in range(w+1):
+    #     print(i, end='\t')
+    # print()
+    
+weight = 7
+weight_list = [1, 3, 4, 5]
+value_list = [1, 4, 5, 7]
+(knapsack(weight, weight_list, value_list))
 
 
 
