@@ -200,10 +200,61 @@ def knapsack(w, wl, vl):
     #     print(i, end='\t')
     # print()
     
-weight = 7
-weight_list = [1, 3, 4, 5]
-value_list = [1, 4, 5, 7]
-(knapsack(weight, weight_list, value_list))
+    
+'''Find the longest common subsequence of two strings'''
+def longest_common_subsubsequence(s1, s2):
+    r = [[0 for x in range(len(s2) + 1)] for y in range(len(s1) + 1)]
+    for i in range(len(r)):
+        for j in range(len(r[0])):
+            left = r[i][j-1]
+            up = r[i-1][j]
+            diag = r[i-1][j-1]
+            if i == 0:
+                r[i][j] = 0
+            else:
+                if j > 0:
+                    if s1[i-1] == s2[j-1]:
+                        r[i][j] = 1 + diag
+                    else:
+                        r[i][j] = max(left, up)
+                
+    trace_back = []
+    i = len(r) - 1
+    j = len(r[0]) - 1
+    while i > 0 and j > 0:
+        cur = r[i][j]
+        left = r[i][j-1]
+        up = r[i-1][j]
+        diag = r[i-1][j-1]
+        if cur == left:
+            j -= 1
+        elif cur == up:
+            i -= 1
+        else:
+            trace_back.insert(0, s2[j-1])
+            i -= 1
+            j -= 1
+            
+    print(trace_back)   
+    index = [x for x in s1]
+    index.insert(0, 0)
+    columns = [x for x in s2]
+    columns.insert(0, 0)
+    r = pd.DataFrame(r, index, columns)
+    print(r)
+    
+    
+s1 = 'acbcf'          
+s2 = 'abcdaf'
+(longest_common_subsubsequence(s1, s2))
+
+
+
+
+
+
+
+
 
 
 
